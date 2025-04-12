@@ -57,8 +57,11 @@ class Memory(Component):
 
 
 class HDD(Component):
-    def __init__(self, size):
+    SSD = 0
+    MAGNETIC = 1
+    def __init__(self, storage_type, size):
         self.size = size
+        self.storage_type = storage_type
         self.partitions = []
     
     def add_partition(self, number, size, designation):
@@ -85,7 +88,7 @@ class HDD(Component):
             print(f"{new_markup}{part_separator}[{part['number']}]: {part['size']} GiB, {part['designation']}")
     
     def clone(self):
-        new_hdd = HDD(self.size)
+        new_hdd = HDD(self.storage_type, self.size)
         for part in self.partitions:
             new_hdd.add_partition(part['number'], part['size'], part['designation'])
         return new_hdd

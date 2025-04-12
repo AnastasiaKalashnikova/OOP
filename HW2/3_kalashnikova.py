@@ -1,15 +1,38 @@
-#There was no assignment in the file, just the code 
-#So I don't know what I was supposed to do.
-
-
 class TextFile:
-    pass
+    def __init__(self, filename):
+        self.filename = filename
+        self.content = ""
+    
+    def write(self, data):
+        self.content = data
+        return f"Данные записаны в файл {self.filename}"
+    
+    def read(self):
+        return f"Содержимое файла {self.filename}: {self.content}"
 
 class Database:
-    pass
+    def __init__(self, dbname):
+        self.dbname = dbname
+        self.records = []
+    
+    def write(self, data):
+        self.records.append(data)
+        return f"Данные добавлены в БД {self.dbname}"
+    
+    def read(self):
+        return f"Данные из БД {self.dbname}: {self.records}"
 
 class NetworkResource:
-    pass
+    def __init__(self, url):
+        self.url = url
+        self.response = ""
+    
+    def write(self, data):
+        self.response = f"Отправлено на {self.url}: {data}"
+        return self.response
+    
+    def read(self):
+        return f"Ответ от {self.url}: {self.response}"
 
 #DON'T TOUCH UNDER THE LINE
 #______________________________________________________________
